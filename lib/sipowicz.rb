@@ -1,10 +1,10 @@
 module Sipowicz
   def valid_credentials?(user)
-    user.authenticate(params[:old_password]) == user
+    user.authenticate(params[:password]) == user
   end
 
   def new_passwords_match?
-    params[:user][:password] == params[:password_again]
+    params[:user][:password] == params[:password_confirmation]
   end
 
   def validate_user(user)
@@ -17,7 +17,7 @@ module Sipowicz
   end
 
   def fields_empty?
-    params["user"]["password"].blank? && params["old_password"].blank? && params["password_again"].blank?
+    params["user"]["password"].blank? && params["password"].blank? && params["password_confirmation"].blank?
   end
 
   def validation_redirect(user)
@@ -39,4 +39,5 @@ module Sipowicz
       false
     end
   end
+
 end
