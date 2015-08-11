@@ -1,6 +1,12 @@
+class User
+end
+
+
 describe Sipowicz do
+  let(:user) { User.new }
   describe '#valid_credentials?' do
-    xit 'authenticates a user' do
+    it 'authenticates a user' do
+      expect(user.authenticate).to eq(true)
     end
     xit 'returns true if an a user object is authentic' do
     end
@@ -12,7 +18,6 @@ describe Sipowicz do
     end
   end
   describe '#validate_user' do
-    xit ''
   end
   describe '#fields_empty?' do
   end
