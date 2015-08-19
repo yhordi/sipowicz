@@ -1,11 +1,9 @@
-class User
-end
-
 
 describe Sipowicz do
-  let(:user) { User.new }
+  let(:user) { FactoryGirl.create :user }
   describe '#valid_credentials?' do
     it 'authenticates a user' do
+      valid_credentials(user)
       expect(user.authenticate).to eq(true)
     end
     xit 'returns true if an a user object is authentic' do

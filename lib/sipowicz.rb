@@ -1,14 +1,14 @@
 class Sipowicz
 
-  def valid_credentials?(user)
+  def self.valid_credentials?(user)
     user.authenticate(params[:password]) == user
   end
 
-  def new_passwords_match?
+  def self.new_passwords_match?
     params[:user][:password] == params[:password_confirmation]
   end
 
-  def validate_user(user)
+  def self.validate_user(user)
     if valid_credentials?(user)
       validate_new_passwords(user)
     else
@@ -17,11 +17,11 @@ class Sipowicz
     end
   end
 
-  def fields_empty?
+  def self.fields_empty?
     params["user"]["password"].blank? && params["password"].blank? && params["password_confirmation"].blank?
   end
 
-  def validation_redirect(user)
+  def self.validation_redirect(user)
     if validate_user(user)
       redirect_to user_path(user.id)
     else
@@ -29,7 +29,7 @@ class Sipowicz
     end
   end
 
-  def validate_new_passwords(user)
+  def self.validate_new_passwords(user)
     if new_passwords_match?
       user.password = params[:user][:password]
       user.update_attributes(user_params)

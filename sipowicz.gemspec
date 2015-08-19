@@ -10,4 +10,6 @@ Gem::Specification.new do |s|
   s.homepage    =
     'http://rubygems.org/gems/sipowicz'
   s.license       = 'MIT'
+  s.add_runtime_dependency 'activerecord'
+  
 end
