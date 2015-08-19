@@ -1,4 +1,5 @@
-module Sipowicz
+class Sipowicz
+
   def valid_credentials?(user)
     user.authenticate(params[:password]) == user
   end
