@@ -1,8 +1,23 @@
 
 describe Sipowicz do
   let(:user) { FactoryGirl.create :user }
+  describe 'configure' do
+    context 'on good params' do
+      it 'assigns sipowicz class variables' do
+        params = {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis'}
+        expect(Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})).to eq(true)
+      end
+    end
+    context 'on bad params' do
+      it 'raises an error with nil params' do
+
+      end
+      it 'raises an error when an empty string is passed' do
+      end
+    end
+  end
   describe '#valid_credentials?' do
-    it 'authenticates a user' do
+    xit 'authenticates a user' do
       Sipowicz.valid_credentials?(user)
       expect(user.authenticate).to eq(true)
     end

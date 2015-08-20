@@ -1,4 +1,19 @@
 class Sipowicz
+  @@options_error = 'Options invalid. You must pass non empty strings for password and password confirmation'
+  
+  def self.configure(options)
+    if options_valid?(options)
+      @@password = options[:password]
+      @@confirmation = options[:confirmation]
+    end
+    true
+  end
+
+  def self.options_valid?(options)
+    raise @@options_error if options[:password] == nil || options[:confirmation] == nil
+    raise @@options_error if options[:password] == '' || options[:confirmation] == ''
+    true
+  end
 
   def self.valid_credentials?(user)
     user.authenticate(params[:password]) == user
@@ -40,5 +55,4 @@ class Sipowicz
       false
     end
   end
-
 end
