@@ -93,6 +93,5 @@ DEPENDENCIES
   activerecord
   factory_girl_rails
   faker
-  rake
   rspec-rails
   sqlite3

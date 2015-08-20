@@ -7,5 +7,4 @@ group :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'activerecord'
-  gem 'rake'
 end
