@@ -5,14 +5,15 @@ describe Sipowicz do
     context 'on good params' do
       it 'assigns sipowicz class variables' do
         params = {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis'}
-        expect(Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})).to eq(true)
+        expect(Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})).to eq('Canadian Travis')
       end
     end
     context 'on bad params' do
       it 'raises an error with nil params' do
-
+        expect{Sipowicz.configure({password: nil, confirmation: nil})}.to raise_error(RuntimeError)
       end
       it 'raises an error when an empty string is passed' do
+        expect{Sipowicz.configure({password: '', confirmation: ''})}.to raise_error(RuntimeError)
       end
     end
   end

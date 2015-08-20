@@ -6,7 +6,6 @@ class Sipowicz
       @@password = options[:password]
       @@confirmation = options[:confirmation]
     end
-    true
   end
 
   def self.options_valid?(options)
