@@ -1,6 +1,7 @@
 require 'sipowicz'
 require 'faker'
 require 'factory_girl_rails'
+require 'active_model'
 require 'active_record'
 require_relative 'factories'
 require_relative '../app/models/user.rb'

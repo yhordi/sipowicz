@@ -15,7 +15,7 @@ class Sipowicz
   end
 
   def self.valid_credentials?(user)
-    user.authenticate(params[:password]) == user
+    user.authenticate(@@password) == user
   end
 
   def self.new_passwords_match?
