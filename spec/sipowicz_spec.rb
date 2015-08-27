@@ -24,7 +24,7 @@ describe Sipowicz do
     end
     it 'authenticates a user' do
       Sipowicz.valid_credentials?(new_user)
-      expect(Sipowicz.valid_credentials?(new_user)).to eq(new_user)
+      expect(Sipowicz.valid_credentials?(new_user)).to eq(true)
     end
     xit 'returns true if an a user object is authentic' do
     end
