@@ -23,7 +23,7 @@ class Sipowicz
   end
 
   def self.new_passwords_match?
-    params[:user][:password] == params[:password_confirmation]
+    @@password == @@confirmation
   end
 
   def self.validate_user(user)
@@ -36,7 +36,7 @@ class Sipowicz
   end
 
   def self.fields_empty?
-    params["user"]["password"].blank? && params["password"].blank? && params["password_confirmation"].blank?
+    @@passwored.blank? && params["password"].blank? && @@confirmation.blank?
   end
 
   def self.validation_redirect(user)
@@ -49,7 +49,7 @@ class Sipowicz
 
   def self.validate_new_passwords(user)
     if new_passwords_match?
-      user.password = params[:user][:password]
+      user.password = @@password
       user.update_attributes(user_params)
       flash[:notice] = "Password updated"
       true

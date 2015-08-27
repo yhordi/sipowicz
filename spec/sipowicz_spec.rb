@@ -1,6 +1,6 @@
 
 describe Sipowicz do
-  # let(:user) { FactoryGirl.create :user }
+  let(:user) { FactoryGirl.create :user }
   let(:new_user) {User.create(name: 'Topher', password: 'supermanz')}
   let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis'} }
   describe 'configure' do
@@ -23,16 +23,17 @@ describe Sipowicz do
       Sipowicz.configure({password: 'supermanz', confirmation: 'supermanz'})
     end
     it 'authenticates a user' do
-      Sipowicz.valid_credentials?(new_user)
       expect(Sipowicz.valid_credentials?(new_user)).to eq(true)
-    end
-    xit 'returns true if an a user object is authentic' do
     end
   end
   describe '#new_passwords_match?' do
-    xit 'returns true if the user typed their password and confirmation correctly' do
+    it 'returns true if the user typed their password and confirmation correctly' do
+      Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})
+        expect(Sipowicz.new_passwords_match?).to eq(true)
     end
-    xit 'returns false if the user types their password or confirmation incorrectly' do
+    it 'returns false if the user types their password or confirmation incorrectly' do
+      Sipowicz.configure({password: params[:user][:password], confirmation: 'blargh'})
+      expect(Sipowicz.new_passwords_match?).to eq(false)
     end
   end
   describe '#validate_user' do
