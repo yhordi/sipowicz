@@ -19,8 +19,7 @@ class Sipowicz
   end
 
   def self.valid_credentials?(user)
-    # p BCrypt::Password.new(user.password_digest)
-    user.authenticate(@@password) == user
+    user.authenticate(@@password)
   end
 
   def self.new_passwords_match?

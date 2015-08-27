@@ -20,11 +20,11 @@ describe Sipowicz do
   end
   describe '#valid_credentials?' do
     before(:each) do
-      Sipowicz.configure({password: 'password', confirmation: 'password'})
+      Sipowicz.configure({password: 'supermanz', confirmation: 'supermanz'})
     end
     it 'authenticates a user' do
-      p Sipowicz.valid_credentials?(new_user)
-      # expect(Sipowicz.valid_credentials?(new_user)).to eq(true)
+      Sipowicz.valid_credentials?(new_user)
+      expect(Sipowicz.valid_credentials?(new_user)).to eq(new_user)
     end
     xit 'returns true if an a user object is authentic' do
     end
