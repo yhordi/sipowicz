@@ -1,4 +1,8 @@
+require 'active_model'
+require 'bcrypt'
 class Sipowicz
+  include ActiveModel::SecurePassword
+  include BCrypt
   @@options_error = 'Options invalid. You must pass non empty strings for password and password confirmation'
   
   def self.configure(options)
@@ -15,6 +19,7 @@ class Sipowicz
   end
 
   def self.valid_credentials?(user)
+    # p BCrypt::Password.new(user.password_digest)
     user.authenticate(@@password) == user
   end
 
