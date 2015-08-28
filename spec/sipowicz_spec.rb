@@ -3,10 +3,11 @@ describe Sipowicz do
   let(:user) { FactoryGirl.create :user }
   let(:new_user) {User.create(name: 'Topher', password: 'supermanz')}
   let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis'} }
+  let(:good_config) {Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})}
   describe 'configure' do
     context 'on good params' do
       it 'assigns sipowicz class variables' do
-        expect(Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})).to eq('Canadian Travis')
+        expect(good_config).to eq('Canadian Travis')
       end
     end
     context 'on bad params' do
@@ -28,12 +29,23 @@ describe Sipowicz do
   end
   describe '#new_passwords_match?' do
     it 'returns true if the user typed their password and confirmation correctly' do
-      Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})
-        expect(Sipowicz.new_passwords_match?).to eq(true)
+      good_config
+      expect(Sipowicz.new_passwords_match?).to eq(true)
     end
     it 'returns false if the user types their password or confirmation incorrectly' do
       Sipowicz.configure({password: params[:user][:password], confirmation: 'blargh'})
       expect(Sipowicz.new_passwords_match?).to eq(false)
+    end
+  end
+  describe '#validate_new_passwords' do
+    describe 'with valid params' do
+      before(:each) do
+        good_config
+      end
+      it "responds with a success message" do
+        expect(Sipowicz.validate_new_passwords(new_user)).to eq("Password updated")
+      end
+
     end
   end
   describe '#validate_user' do
@@ -41,7 +53,5 @@ describe Sipowicz do
   describe '#fields_empty?' do
   end
   describe '#validation_redirect' do
-  end
-  describe '#validate_new_passwords' do
   end
 end

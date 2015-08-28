@@ -1,8 +1,11 @@
 require 'active_model'
+require 'active_support'
 require 'bcrypt'
+require_relative 'errors'
 class Sipowicz
   include ActiveModel::SecurePassword
-  include BCrypt
+  include Errors
+  @@messages = {notice: nil, error: nil}
   @@options_error = 'Options invalid. You must pass non empty strings for password and password confirmation'
   
   def self.configure(options)
@@ -22,17 +25,16 @@ class Sipowicz
     user.authenticate(@@password) == user
   end
 
-  def self.new_passwords_match?
-    @@password == @@confirmation
-  end
-
   def self.validate_user(user)
     if valid_credentials?(user)
       validate_new_passwords(user)
     else
       flash[:error] = unsaved_password(invalid_password)
-      false
     end
+  end
+
+  def self.new_passwords_match?
+    @@password == @@confirmation
   end
 
   def self.fields_empty?
@@ -50,12 +52,12 @@ class Sipowicz
   def self.validate_new_passwords(user)
     if new_passwords_match?
       user.password = @@password
-      user.update_attributes(user_params)
-      flash[:notice] = "Password updated"
-      true
+      user.update_attributes(password: @@password)
+      @@messages[notice:] = "Password updated"
+      @@messages[notice:]
     else
-      flash[:error] = unsaved_password(non_matching)
-      false
+      @@messages[:error] = unsaved_password(non_matching)
+      @@messages[:error]
     end
   end
 end
