@@ -53,11 +53,10 @@ class Sipowicz
     if new_passwords_match?
       user.password = @@password
       user.update_attributes(password: @@password)
-      @@messages[notice:] = "Password updated"
-      @@messages[notice:]
+      @@messages[:notice] = "Password updated"
     else
-      @@messages[:error] = unsaved_password(non_matching)
-      @@messages[:error]
+      #needs refactoring
+      @@messages[:error] = Errors.unsaved_password(Errors.non_matching)
     end
   end
 end

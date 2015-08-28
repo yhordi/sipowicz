@@ -45,7 +45,17 @@ describe Sipowicz do
       it "responds with a success message" do
         expect(Sipowicz.validate_new_passwords(new_user)).to eq("Password updated")
       end
+      it "updates a user's password" do
+        Sipowicz.validate_new_passwords(new_user)
+        expect(new_user.password).to eq('Canadian Travis')
+      end
+    end
+    describe 'with invalid params' do
+      it "responds with an error" do
+        Sipowicz.configure({password: params[:user][:password], confirmation: 'blargh'})
 
+        expect(Sipowicz.validate_new_passwords(new_user)).to eq("Your new password was not saved. Your new passwords don't match.")
+      end
     end
   end
   describe '#validate_user' do
