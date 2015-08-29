@@ -25,11 +25,8 @@ class Sipowicz
   end
 
   def self.validate_user(user)
-    if valid_credentials?(user)
-      validate_new_passwords(user)
-    else
-      @@messages[:error] = Errors.unsaved_password(Errors.invalid_password)
-    end
+    return validate_new_passwords(user) if valid_credentials?(user)
+    @@messages[:error] = Errors.unsaved_password(Errors.invalid_password)
   end
 
   def self.new_passwords_match?
