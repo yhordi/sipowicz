@@ -1,6 +1,5 @@
 require 'active_model'
 require 'active_support'
-require 'bcrypt'
 require_relative 'errors'
 class Sipowicz
   include ActiveModel::SecurePassword
@@ -29,7 +28,7 @@ class Sipowicz
     if valid_credentials?(user)
       validate_new_passwords(user)
     else
-      flash[:error] = unsaved_password(invalid_password)
+      @@messages[:error] = Errors.unsaved_password(Errors.invalid_password)
     end
   end
 

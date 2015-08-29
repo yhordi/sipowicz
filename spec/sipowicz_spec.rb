@@ -53,12 +53,20 @@ describe Sipowicz do
     describe 'with invalid params' do
       it "responds with an error" do
         Sipowicz.configure({password: params[:user][:password], confirmation: 'blargh'})
-
         expect(Sipowicz.validate_new_passwords(new_user)).to eq("Your new password was not saved. Your new passwords don't match.")
       end
     end
   end
   describe '#validate_user' do
+    describe 'with valid params' do
+      before(:each) do
+        Sipowicz.configure({password: 'supermanz', confirmation: 'supermanz'})
+      end
+      it 'calls #validate_new_passwords' do
+        allow(Sipowicz).to receive(:validate_user).and_return('Password updated')
+        expect(Sipowicz.validate_user(new_user)).to eq('Password updated')
+      end
+    end
   end
   describe '#fields_empty?' do
   end
