@@ -2,7 +2,6 @@
 describe Sipowicz do
   let(:new_user) {User.create(name: 'Topher', password: 'supermanz')}
   let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis', old_password: 'supermanz'} }
-  # let(:user) { FactoryGirl.build :user }
   let(:good_config) {
     Sipowicz.configure(
       {password: params[:user][:password], 
@@ -76,24 +75,18 @@ describe Sipowicz do
       before(:each) do
         good_config
       end
-
       it 'calls #validate_new_passwords' do
         expect(Sipowicz.validate_user(new_user)).to eq('Password updated')
       end
-
     end
     describe 'with invalid params' do
       before(:each) do
         Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation], old_password: 'wrongo'})
       end
-      
       it 'responds with an error message' do
         expect(Sipowicz.validate_user(new_user)).to eq("Your new password was not saved. You entered your original password incorrectly.")
       end
-
     end
-  end
-  describe '#fields_empty?' do
   end
   describe '#validation_redirect' do
   end

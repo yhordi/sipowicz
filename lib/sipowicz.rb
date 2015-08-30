@@ -42,10 +42,6 @@ class Sipowicz
     @@password == @@confirmation
   end
 
-  def self.fields_empty?
-    @@password.blank? && params["password"].blank? && @@confirmation.blank?
-  end
-
   def self.validation_redirect(user)
     if validate_user(user)
       redirect_to user_path(user.id)
