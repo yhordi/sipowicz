@@ -11,5 +11,6 @@ Gem::Specification.new do |s|
     'http://rubygems.org/gems/sipowicz'
   s.license       = 'MIT'
   s.add_runtime_dependency 'activerecord'
-
+  s.add_runtime_dependency 'activemodel'
+  s.add_runtime_dependency 'bcrypt'
 end

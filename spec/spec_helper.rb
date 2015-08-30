@@ -1,11 +1,7 @@
 require_relative '../lib/sipowicz'
-require 'faker'
-require 'factory_girl_rails'
 require 'active_model'
 require 'active_record'
-require 'action_controller'
 require 'database_cleaner'
-require_relative 'factories'
 require_relative '../app/models/user.rb'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", 

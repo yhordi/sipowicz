@@ -1,9 +1,7 @@
 require 'active_model'
 require 'active_support'
-require 'action_controller'
 require_relative 'errors'
 class Sipowicz
-  # include ActionController::Redirecting
   include ActiveModel::SecurePassword
   include Errors
   @@messages = {notice: nil, error: nil}
