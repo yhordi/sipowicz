@@ -1,6 +1,6 @@
 
 describe Sipowicz do
-  let(:user) { FactoryGirl.create :user }
+  let(:user) { FactoryGirl.build :user }
   let(:new_user) {User.create(name: 'Topher', password: 'supermanz')}
   let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis'} }
   let(:good_config) {Sipowicz.configure({password: params[:user][:password], confirmation: params[:confirmation]})}
@@ -17,6 +17,12 @@ describe Sipowicz do
       it 'raises an error when an empty string is passed' do
         expect{Sipowicz.configure({password: '', confirmation: ''})}.to raise_error(RuntimeError)
       end
+    end
+  end
+  describe 'options_error' do
+    xit 'raises a nil option error with nil params' do
+    end
+    xit 'raises an emptuy string error when an empty string is passed' do
     end
   end
   describe '#valid_credentials?' do
@@ -60,11 +66,21 @@ describe Sipowicz do
   describe '#validate_user' do
     describe 'with valid params' do
       before(:each) do
-        Sipowicz.configure({password: 'supermanz', confirmation: 'supermanz'})
+        Sipowicz.configure({password: params[:user][:password], confirmation: params[:user][:password]})
       end
       it 'calls #validate_new_passwords' do
-        allow(Sipowicz).to receive(:validate_user).and_return('Password updated')
+        # allow(Sipowicz).to receive(:validate_user).and_return('Password updated')
         expect(Sipowicz.validate_user(new_user)).to eq('Password updated')
+      end
+    end
+    describe 'with invalid params' do
+      before(:each) do
+        Sipowicz.configure({password: params[:user][:password], 
+                            confirmation: params[:user][:confirmation], 
+                            old_password: 'wrongo'})
+      end
+      it 'responds with an error message' do
+        expect(Sipowicz.validate_user(user)).to eq("Your new password was not saved. You entered your original password incorrectly.")
       end
     end
   end
