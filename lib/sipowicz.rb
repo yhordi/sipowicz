@@ -1,7 +1,9 @@
 require 'active_model'
 require 'active_support'
+require 'action_controller'
 require_relative 'errors'
 class Sipowicz
+  # include ActionController::Redirecting
   include ActiveModel::SecurePassword
   include Errors
   @@messages = {notice: nil, error: nil}
@@ -40,14 +42,6 @@ class Sipowicz
 
   def self.new_passwords_match?
     @@password == @@confirmation
-  end
-
-  def self.validation_redirect(user)
-    if validate_user(user)
-      redirect_to user_path(user.id)
-    else
-      redirect_to edit_user_path(user.id)
-    end
   end
 
   def self.validate_new_passwords(user)

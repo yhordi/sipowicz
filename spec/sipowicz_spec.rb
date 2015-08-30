@@ -88,6 +88,4 @@ describe Sipowicz do
       end
     end
   end
-  describe '#validation_redirect' do
-  end
 end
