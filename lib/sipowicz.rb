@@ -8,12 +8,9 @@ class Sipowicz
   @@options_errors = {option_nil: "is nil.",
                       empty: "is an empty string."
                       }
-# I want to build specific errors here that refer to which variable is empty.
 
-  # 'Options invalid. You must pass non empty strings for password and password confirmation'
-  
   def self.options_error(key, error)
-    raise "Option passed to key #{key} #{error}"
+    raise "Option passed to #{key} #{error}"
   end
 
   def self.configure(options)
@@ -29,13 +26,11 @@ class Sipowicz
       return options_error(k, @@options_errors[:option_nil]) if v.nil?
       return options_error(k, @@options_errors[:empty]) if v.empty?
     end
-    # raise @@options_error if options[:password] == nil || options[:confirmation] == nil
-    # raise @@options_error if options[:password] == '' || options[:confirmation] == ''
     true
   end
 
   def self.valid_credentials?(user)
-    user.authenticate(user.password) == user
+    user.authenticate(@@old_password) == user
   end
 
   def self.validate_user(user)
