@@ -28,8 +28,8 @@ class SipowiczInternal
       true
     end
 
-    def valid_credentials?(user)
-      user.authenticate(@@old_password) == user
+    def valid_credentials?(user, old_password)
+      user.authenticate(old_password) == user
     end
 
     def new_passwords_match?

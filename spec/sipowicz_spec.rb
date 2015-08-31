@@ -32,14 +32,14 @@ describe Sipowicz do
       expect{Sipowicz.configure({password: 'hello', confirmation: 'alskdfj', old_password: ''})}.to raise_error(RuntimeError, 'Option passed to old_password is an empty string.')
     end
   end
-  describe '#valid_credentials?' do
-    before(:each) do
-      good_config
-    end
-    it 'returns true when passed an authentic user' do
-      expect(Sipowicz.valid_credentials?(new_user)).to eq(true)
-    end
-  end
+  # describe '#valid_credentials?' do
+  #   before(:each) do
+  #     good_config
+  #   end
+  #   it 'returns true when passed an authentic user' do
+  #     expect(Sipowicz.valid_credentials?(new_user)).to eq(true)
+  #   end
+  # end
   describe '#new_passwords_match?' do
     it 'returns true if the user typed their password and confirmation correctly' do
       good_config

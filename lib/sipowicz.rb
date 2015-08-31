@@ -30,8 +30,8 @@ class Sipowicz
       SipowiczInternal.validate_new_passwords(user)
     end
 
-    def valid_credentials?(user)
-      SipowiczInternal.valid_credentials?(user)
+    def valid_credentials?(user, password)
+      SipowiczInternal.valid_credentials?(user, password)
     end
 
   end
