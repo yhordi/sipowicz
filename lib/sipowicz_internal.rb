@@ -3,6 +3,9 @@ class SipowiczInternal
   cattr_accessor :messages
   class << self
     @@messages = {notice: nil, error: nil}
+    @@options_errors = {option_nil: "is nil.",
+                        empty: "is an empty string."
+                        }
     def validate_new_passwords(user)
       if new_passwords_match?
         user.password = @@password

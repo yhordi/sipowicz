@@ -8,9 +8,7 @@ class Sipowicz
   class << self
     include ActiveModel::SecurePassword
     include Errors
-    @@options_errors = {option_nil: "is nil.",
-                        empty: "is an empty string."
-                        }
+
     @@messages = SipowiczInternal.messages
 
     def configure(options)
