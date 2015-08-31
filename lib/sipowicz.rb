@@ -20,18 +20,18 @@ class Sipowicz
     end
 
     def update_user(user)
-      return validate_new_passwords(user) if valid_credentials?(user)
+      return validate_new_passwords(user) if valid_credentials?(user, @@old_password)
       messages[:error] = Errors.unsaved_password(Errors.invalid_password)
     end
 
     private
 
-    def validate_new_passwords(user, password, confirmation)
-      Validator.validate_new_passwords(user, password, confirmation)
+    def validate_new_passwords(user)
+      Validator.validate_new_passwords(user, @@password, @@confirmation)
     end
 
-    def valid_credentials?(user, password)
-      Validator.valid_credentials?(user, password)
+    def valid_credentials?(user, old_password)
+      Validator.valid_credentials?(user, old_password)
     end
 
   end
