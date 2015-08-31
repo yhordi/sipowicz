@@ -1,7 +1,7 @@
 require 'active_model'
 require 'active_support'
 require_relative 'errors'
-require_relative 'sipowicz_internal'
+require_relative 'validator'
 
 class Sipowicz
   cattr_reader :messages
@@ -9,10 +9,10 @@ class Sipowicz
     include ActiveModel::SecurePassword
     include Errors
 
-    @@messages = SipowiczInternal.messages
+    @@messages = Validator.messages
 
     def configure(options)
-      if SipowiczInternal.options_valid?(options)
+      if Validator.options_valid?(options)
         @@old_password = options[:old_password]
         @@password = options[:password]
         @@confirmation = options[:confirmation]
@@ -27,11 +27,11 @@ class Sipowicz
     private
 
     def validate_new_passwords(user, password, confirmation)
-      SipowiczInternal.validate_new_passwords(user, password, confirmation)
+      Validator.validate_new_passwords(user, password, confirmation)
     end
 
     def valid_credentials?(user, password)
-      SipowiczInternal.valid_credentials?(user, password)
+      Validator.valid_credentials?(user, password)
     end
 
   end

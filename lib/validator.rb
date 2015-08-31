@@ -1,5 +1,5 @@
 require 'active_support'
-class SipowiczInternal
+class Validator
   cattr_accessor :messages
   class << self
     @@messages = {notice: nil, error: nil}

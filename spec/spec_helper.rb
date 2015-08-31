@@ -1,5 +1,5 @@
 require_relative '../lib/sipowicz'
-require_relative '../lib/sipowicz_internal'
+require_relative '../lib/validator'
 require 'active_model'
 require 'active_record'
 require 'database_cleaner'
