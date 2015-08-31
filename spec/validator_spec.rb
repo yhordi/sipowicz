@@ -24,4 +24,21 @@ describe Validator do
       expect(Validator.new_passwords_match?(params[:user][:password], 'blargh')).to eq(false)
     end
   end
+  describe '#validate_new_passwords' do
+    describe 'with valid params' do
+      it "responds with a success message" do
+        Validator.validate_new_passwords(new_user, params[:user][:password], params[:confirmation])
+        expect(Validator.messages[:notice]).to eq("Password updated")
+      end
+      it "updates a user's password" do
+        Validator.validate_new_passwords(new_user, params[:user][:password], params[:confirmation])
+        expect(new_user.password).to eq('Canadian Travis')
+      end
+    end
+    describe 'with invalid params' do
+      it "responds with an error" do
+        expect(Validator.validate_new_passwords(new_user, params[:user][:password], 'blargh')).to eq("Your new password was not saved. Your new passwords don't match.")
+      end
+    end
+  end
 end

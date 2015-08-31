@@ -6,9 +6,9 @@ require_relative 'validator'
 class Sipowicz
   cattr_reader :messages
   class << self
+    
     include ActiveModel::SecurePassword
     include Errors
-
     @@messages = Validator.messages
 
     def configure(options)

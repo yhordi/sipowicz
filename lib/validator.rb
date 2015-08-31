@@ -7,9 +7,9 @@ class Validator
                         empty: "is an empty string."
                         }
     def validate_new_passwords(user, password, confirmation)
-      if new_passwords_match?(password. comfirmation)
-        user.password = @@password
-        user.update_attributes(password: @@password)
+      if new_passwords_match?(password, confirmation)
+        user.password = password
+        user.update_attributes(password: password)
         @@messages[:notice] = "Password updated"
       else
         @@messages[:error] = Errors.unsaved_password(Errors.non_matching)
