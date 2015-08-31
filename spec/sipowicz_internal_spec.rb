@@ -16,4 +16,12 @@ describe SipowiczInternal do
       expect(SipowiczInternal.valid_credentials?(new_user, params[:old_password])).to eq(true)
     end
   end
+  describe '#new_passwords_match?' do
+    it 'returns true if the user typed their password and confirmation correctly' do
+      expect(SipowiczInternal.new_passwords_match?(params[:user][:password], params[:confirmation])).to eq(true)
+    end
+    it 'returns false if the user types their password or confirmation incorrectly' do
+      expect(SipowiczInternal.new_passwords_match?(params[:user][:password], 'blargh')).to eq(false)
+    end
+  end
 end

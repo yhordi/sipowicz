@@ -26,8 +26,8 @@ class Sipowicz
 
     private
 
-    def validate_new_passwords(user)
-      SipowiczInternal.validate_new_passwords(user)
+    def validate_new_passwords(user, password, confirmation)
+      SipowiczInternal.validate_new_passwords(user, password, confirmation)
     end
 
     def valid_credentials?(user, password)

@@ -6,8 +6,8 @@ class SipowiczInternal
     @@options_errors = {option_nil: "is nil.",
                         empty: "is an empty string."
                         }
-    def validate_new_passwords(user)
-      if new_passwords_match?
+    def validate_new_passwords(user, password, confirmation)
+      if new_passwords_match?(password. comfirmation)
         user.password = @@password
         user.update_attributes(password: @@password)
         @@messages[:notice] = "Password updated"
@@ -32,8 +32,8 @@ class SipowiczInternal
       user.authenticate(old_password) == user
     end
 
-    def new_passwords_match?
-      @@password == @@confirmation
+    def new_passwords_match?(password, confirmation)
+      password == confirmation
     end
   end
 end

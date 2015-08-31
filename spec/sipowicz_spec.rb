@@ -40,16 +40,16 @@ describe Sipowicz do
   #     expect(Sipowicz.valid_credentials?(new_user)).to eq(true)
   #   end
   # end
-  describe '#new_passwords_match?' do
-    it 'returns true if the user typed their password and confirmation correctly' do
-      good_config
-      expect(Sipowicz.new_passwords_match?).to eq(true)
-    end
-    it 'returns false if the user types their password or confirmation incorrectly' do
-      Sipowicz.configure({password: params[:user][:password], confirmation: 'blargh'})
-      expect(Sipowicz.new_passwords_match?).to eq(false)
-    end
-  end
+  # describe '#new_passwords_match?' do
+  #   it 'returns true if the user typed their password and confirmation correctly' do
+  #     good_config
+  #     expect(Sipowicz.new_passwords_match?).to eq(true)
+  #   end
+  #   it 'returns false if the user types their password or confirmation incorrectly' do
+  #     Sipowicz.configure({password: params[:user][:password], confirmation: 'blargh'})
+  #     expect(Sipowicz.new_passwords_match?).to eq(false)
+  #   end
+  # end
   describe '#validate_new_passwords' do
     describe 'with valid params' do
       before(:each) do
