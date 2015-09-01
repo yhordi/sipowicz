@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'cop-detective'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2015-08-08'
   s.summary     = "Do your passwords match?"
   s.description = "A simple gem to use in your controller to check if your passwords match before you save or update user data."
