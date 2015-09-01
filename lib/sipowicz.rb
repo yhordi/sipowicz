@@ -8,11 +8,11 @@ class Sipowicz
   class << self
     
     include ActiveModel::SecurePassword
-    include Errors
-    @@messages = Validator.messages
+    # include Errors
+    @@messages = SipowiczValidator.messages
 
     def configure(options)
-      if Validator.options_valid?(options)
+      if SipowiczValidator.options_valid?(options)
         @@old_password = options[:old_password]
         @@password = options[:password]
         @@confirmation = options[:confirmation]
@@ -21,18 +21,19 @@ class Sipowicz
 
     def update_user(user)
       return validate_new_passwords(user) if valid_credentials?(user, @@old_password)
-      messages[:error] = Errors.unsaved_password(Errors.invalid_password)
+      messages[:error] = ErrorMessages.unsaved_password(ErrorMessages.invalid_password)
     end
 
     private
 
     def validate_new_passwords(user)
-      Validator.validate_new_passwords(user, @@password, @@confirmation)
+      SipowiczValidator.validate_new_passwords(user, @@password, @@confirmation)
     end
 
     def valid_credentials?(user, old_password)
-      Validator.valid_credentials?(user, old_password)
+      SipowiczValidator.valid_credentials?(user, old_password)
     end
 
   end
+
 end

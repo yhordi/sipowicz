@@ -1,5 +1,6 @@
 require 'active_support'
-class Validator
+class SipowiczValidator
+  include Sipowicz::ErrorMessages
   cattr_accessor :messages
   class << self
     @@messages = {notice: nil, error: nil}
@@ -12,18 +13,14 @@ class Validator
         user.update_attributes(password: password)
         @@messages[:notice] = "Password updated"
       else
-        @@messages[:error] = Errors.unsaved_password(Errors.non_matching)
+        @@messages[:error] = Sipowicz::ErrorMessages.unsaved_password(Sipowicz::ErrorMessages.non_matching)
       end
-    end
-
-    def options_error(key, error)
-      raise "Option passed to #{key} #{error}"
     end
 
     def options_valid?(options)
       options.each do |k, v|
-        return options_error(k, @@options_errors[:option_nil]) if v.nil?
-        return options_error(k, @@options_errors[:empty]) if v.empty?
+        return Sipowicz::ErrorMessages.options_error(k, @@options_errors[:option_nil]) if v.nil?
+        return Sipowicz::ErrorMessages.options_error(k, @@options_errors[:empty]) if v.empty?
       end
       true
     end

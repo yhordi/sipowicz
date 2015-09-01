@@ -1,17 +1,25 @@
-module Errors
-  def self.unsaved_password(reason)
-    "Your new password was not saved. #{reason}"
-  end
+class Sipowicz
+  module ErrorMessages
+    class << self
+      def unsaved_password(reason)
+        "Your new password was not saved. #{reason}"
+      end
 
-  def self.invalid_password
-    "You entered your original password incorrectly."
-  end
+      def invalid_password
+        "You entered your original password incorrectly."
+      end
 
-  def self.non_matching
-    "Your new passwords don't match."
-  end
+      def non_matching
+        "Your new passwords don't match."
+      end
 
-  def self.show_errors(model)
-    flash[:error] = model.errors.full_messages
+      def show_errors(model)
+        flash[:error] = model.errors.full_messages
+      end
+
+      def options_error(key, error)
+        raise "Option passed to #{key} #{error}"
+      end
+    end
   end
 end
