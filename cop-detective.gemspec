@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'CopDetective-rails'
+  s.name        = 'cop-detectiv'
   s.version     = '0.0.1'
   s.date        = '2015-08-08'
   s.summary     = "Do your passwords match?"
