@@ -1,4 +1,4 @@
-class Sipowicz
+class CopDetective
   module ErrorMessages
     class << self
       def unsaved_password(reason)

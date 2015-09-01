@@ -1,4 +1,4 @@
-require_relative '../lib/sipowicz'
+require_relative '../lib/cop_detective'
 require_relative '../lib/validator'
 require 'active_model'
 require 'active_record'

@@ -1,6 +1,6 @@
 require 'active_support'
-class SipowiczValidator
-  include Sipowicz::ErrorMessages
+class CopDetectiveValidator
+  include CopDetective::ErrorMessages
   cattr_accessor :messages
   class << self
     @@messages = {notice: nil, error: nil}
@@ -13,14 +13,14 @@ class SipowiczValidator
         user.update_attributes(password: password)
         @@messages[:notice] = "Password updated"
       else
-        @@messages[:error] = Sipowicz::ErrorMessages.unsaved_password(Sipowicz::ErrorMessages.non_matching)
+        @@messages[:error] = CopDetective::ErrorMessages.unsaved_password(CopDetective::ErrorMessages.non_matching)
       end
     end
 
     def options_valid?(options)
       options.each do |k, v|
-        return Sipowicz::ErrorMessages.options_error(k, @@options_errors[:option_nil]) if v.nil?
-        return Sipowicz::ErrorMessages.options_error(k, @@options_errors[:empty]) if v.empty?
+        return CopDetective::ErrorMessages.options_error(k, @@options_errors[:option_nil]) if v.nil?
+        return CopDetective::ErrorMessages.options_error(k, @@options_errors[:empty]) if v.empty?
       end
       true
     end
