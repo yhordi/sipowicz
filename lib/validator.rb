@@ -2,6 +2,7 @@ require 'active_support'
 class CopDetectiveValidator
   include CopDetective::ErrorMessages
   cattr_accessor :messages
+  
   class << self
     @@messages = {notice: nil, error: nil}
     @@options_errors = {option_nil: "is nil.",
