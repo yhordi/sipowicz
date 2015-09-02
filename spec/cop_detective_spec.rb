@@ -1,5 +1,5 @@
 describe CopDetective do
-  let(:new_user) {User.create(name: 'Topher', password: 'supermanz')}
+  let(:user) {User.create(name: 'Topher', password: 'supermanz')}
   let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis', old_password: 'supermanz'} }
   let(:good_config) {
     CopDetective.configure(
@@ -39,7 +39,7 @@ describe CopDetective do
         good_config
       end
       it 'calls #validate_new_passwords' do
-        expect(CopDetective.update_user(new_user)).to eq('Password updated')
+        expect(CopDetective.update_user(user)).to eq('Password updated')
       end
     end
     describe 'with invalid params' do
@@ -47,8 +47,18 @@ describe CopDetective do
         CopDetective.configure({password: params[:user][:password], confirmation: params[:confirmation], old_password: 'wrongo'})
       end
       it 'responds with an error message' do
-        expect(CopDetective.update_user(new_user)).to eq("Your new password was not saved. You entered your original password incorrectly.")
+        expect(CopDetective.update_user(user)).to eq("Your new password was not saved. You entered your original password incorrectly.")
       end
+    end
+  end
+
+  describe '#create_user' do
+    describe 'with valid params' do
+      it 'responds with a success message' do
+        expect(CopDetective.create_user(user)).to eq("Account created. You may now log in.")
+      end
+    end
+    describe 'with invalid params' do
     end
   end
 end

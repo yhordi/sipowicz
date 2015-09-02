@@ -8,7 +8,6 @@ class CopDetective
   class << self
     
     include ActiveModel::SecurePassword
-    # include Errors
     @@messages = CopDetectiveValidator.messages
 
     def configure(options)
@@ -22,6 +21,15 @@ class CopDetective
     def update_user(user)
       return validate_new_passwords(user) if valid_credentials?(user, @@old_password)
       messages[:error] = ErrorMessages.unsaved_password(ErrorMessages.invalid_password)
+    end
+
+    def create_user(user, password, confirmation)
+      if CopDetectiveValidator.new_passwords_match?(password, confirmation) && user.valid?
+        user.save
+        @@messages.notice = "Account created. You may now log in."
+      else
+        @@messages.error = "Passwords don't match"
+      end
     end
 
     private
