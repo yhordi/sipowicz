@@ -5,5 +5,5 @@
 
 ###Changelog
 
-#### V 0.1.0
+#### V 0.0.3
 - Adds #create_user method
