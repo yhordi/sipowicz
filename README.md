@@ -3,7 +3,7 @@
 
 <p> Note: This is the pre-alpha version of this gem, so it is probably riddled with bugs.</p>
 
-##Changelog
+###Changelog
 
-### V 0.1.0
-	- Adds #create_user method
+#### V 0.1.0
+- Adds #create_user method
