@@ -11,7 +11,7 @@ Gem::Specification.new 'cop-detective', '0.1.0' do |s|
   s.homepage    =
     'http://rubygems.org/gems/cop-detective'
   s.license       = 'MIT'
-  s.add_runtime_dependency 'activerecord', '>= 4.2.3'
-  s.add_runtime_dependency 'activemodel', '>= 4.2.3'
-  s.add_runtime_dependency 'bcrypt', '>= 3.1.10'
+  s.add_runtime_dependency 'activerecord', '~> 4.0'
+  s.add_runtime_dependency 'activemodel', '~> 4.0'
+  s.add_runtime_dependency 'bcrypt', '~> 3.1'
 end
