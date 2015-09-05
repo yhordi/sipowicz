@@ -37,7 +37,7 @@ describe CopDetectiveValidator do
     end
     describe 'with invalid params' do
       it "responds with an error" do
-        expect(CopDetectiveValidator.validate_new_passwords(new_user, params[:user][:password], 'blargh')).to eq("Your new password was not saved. Your new passwords don't match.")
+        expect(CopDetectiveValidator.validate_new_passwords(new_user, params[:user][:password], 'blargh')).to include("Your new password was not saved. Your new passwords don't match.")
       end
     end
   end

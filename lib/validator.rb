@@ -1,10 +1,12 @@
 require 'active_support'
+require 'active_record'
+
 class CopDetectiveValidator
   include CopDetective::ErrorMessages
   cattr_accessor :messages
   
   class << self
-    @@messages = {notice: nil, error: nil}
+    @@messages = {notice: nil}
     @@options_errors = {option_nil: "is nil.",
                         empty: "is an empty string."
                         }
@@ -14,7 +16,7 @@ class CopDetectiveValidator
         user.update_attributes(password: password)
         @@messages[:notice] = "Password updated"
       else
-        @@messages[:error] = CopDetective::ErrorMessages.unsaved_password(CopDetective::ErrorMessages.non_matching)
+        user.errors.full_messages << CopDetective::ErrorMessages.unsaved_password(CopDetective::ErrorMessages.non_matching)
       end
     end
 
