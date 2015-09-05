@@ -77,6 +77,7 @@ describe CopDetective do
   describe '#create_user' do
     describe 'with valid params' do
       it 'responds with a success message' do
+        good_config
         expect(CopDetective.create_user(user)).to eq("Account created. You may now log in.")
       end
     end
