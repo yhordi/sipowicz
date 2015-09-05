@@ -49,7 +49,6 @@ describe CopDetective do
       end
       it 'responds with an error message' do
         expect(CopDetective.update_user(user)).to eq("Your new password was not saved. You entered your original password incorrectly.")
-<<<<<<< HEAD
       end
     end
   end
@@ -71,8 +70,6 @@ describe CopDetective do
       it 'responds with an error message' do
         CopDetective.configure({password: params[:user][:password], confirmation: 'speerp'})
         expect(CopDetective.create_user(new_user)).to eq("Passwords don't match or other params are not valid.")
-=======
->>>>>>> 0785c70... WIP working on #create_user
       end
     end
   end
