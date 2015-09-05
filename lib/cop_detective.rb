@@ -1,12 +1,12 @@
 require 'active_model'
 require 'active_support'
+require 'active_record'
 require_relative 'errors'
 require_relative 'validator'
 
 class CopDetective
   cattr_reader :messages
   class << self
-    
     include ActiveModel::SecurePassword
     @@messages = CopDetectiveValidator.messages
 
@@ -28,7 +28,7 @@ class CopDetective
         user.save
         @@messages[:notice] = "Account created. You may now log in."
       else
-        @@messages[:error] = "Passwords don't match or other params are not valid."
+        user.errors.full_messages << "Passwords don't match or other params are not valid."
       end
     end
 

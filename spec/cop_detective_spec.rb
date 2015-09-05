@@ -69,7 +69,7 @@ describe CopDetective do
     describe 'with invalid params' do
       it 'responds with an error message' do
         CopDetective.configure({password: params[:user][:password], confirmation: 'speerp'})
-        expect(CopDetective.create_user(new_user)).to eq("Passwords don't match or other params are not valid.")
+        expect(CopDetective.create_user(new_user)).to include("Passwords don't match or other params are not valid.")
       end
     end
   end
