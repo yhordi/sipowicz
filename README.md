@@ -5,5 +5,8 @@
 
 ###Changelog
 
+#### V 0.0.5
+- Migrates error handling of user validation to ActiveRecord objects. Errors can now be accessed through user.errors.full_messages.
+
 #### V 0.0.3
 - Adds #create_user method

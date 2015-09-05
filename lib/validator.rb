@@ -6,7 +6,7 @@ class CopDetectiveValidator
   cattr_accessor :messages
   
   class << self
-    @@messages = {notice: nil, error: nil}
+    @@messages = {notice: nil}
     @@options_errors = {option_nil: "is nil.",
                         empty: "is an empty string."
                         }
