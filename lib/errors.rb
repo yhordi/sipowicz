@@ -13,15 +13,15 @@ class CopDetective
         'You must pass a hash to the set_keys method'
       end
 
-      def format
-        raise <<-MESSAGE 
+      def formatting
+        <<-MESSAGE 
         The keys in the hash you pass to #set_keys must be as follows:
           password:
           confirmation:
           old_password:
-        the values represent the keys in your params hash.
-
-        a correctly configured hash would look like this:
+          
+        the values you pass should reflect keys in your params hash.
+        a correctly configured hash would look similar to this:
           password: :new_password
           confirmation: :password_again
           old_password: :original_password
