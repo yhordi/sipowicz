@@ -30,6 +30,7 @@ class CopDetectiveAssigner
       keys.each do |k, v|
         @@keychain << v
       end
+      assign
       @@keychain
     end
 
@@ -42,8 +43,8 @@ class CopDetectiveAssigner
     end
 
     def configure
-      old_password = @@internal_keys[:old_password]
-      password = @@internal_keys[:password] || nil
+      old_password = @@internal_keys[:old_password] || nil
+      password = @@internal_keys[:password]
       confirmation = @@internal_keys[:confirmation]
       CopDetective.configure({old_password: old_password, 
                               password: password, 

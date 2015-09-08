@@ -26,7 +26,7 @@ class CopDetective
     end
 
     def investigate(user, params)
-      build_params(params)
+      assign(params)
       return create_user(user) if @@old_password == nil
       update_user(user)
     end
