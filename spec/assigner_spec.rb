@@ -17,12 +17,14 @@ describe CopDetectiveAssigner do
 
   describe '#translate_keys' do
     it 'sets the @@internal_keys hash' do
-      # CopDetectiveAssigner.build_params(params)
       expect(CopDetectiveAssigner.translate_keys).to eq({:password=>"Canadian Travis", :confirmation=>"Canadian Travis", :old_password=>"supermanz"})
     end
   end
 
   describe '#configure' do
+    it 'assigns class variables for the CopDetective class' do
+      expect(CopDetectiveAssigner.configure).to eq('Canadian Travis')
+    end
   end
 
 end
