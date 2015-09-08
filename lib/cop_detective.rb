@@ -6,17 +6,25 @@ require_relative 'validator'
 
 class CopDetective
   cattr_reader :messages
-  class << self
+  
     include ActiveModel::SecurePassword
     @@messages = CopDetectiveValidator.messages
+    @@keychain = []
+    @@params = Hash.new(nil)
+    class << self
 
-    def configure(options)
-      if CopDetectiveValidator.options_valid?(options)
-        @@old_password = options[:old_password] ||= 'not set'
-        @@password = options[:password]
-        @@confirmation = options[:confirmation]
-      end
+    def set_keys(keys)
+      @@keys = keys
+      set_keychain(@@keys)
     end
+
+    def investigate(user, params)
+      build_params(params)
+      return create_user(user) if @@old_password == nil
+      update_user(user)
+    end
+
+    private
 
     def update_user(user)
       return validate_new_passwords(user) if valid_credentials?(user, @@old_password)
@@ -32,7 +40,37 @@ class CopDetective
       end
     end
 
-    private
+    def build_params(params)
+      params.each do |k, v|
+        if v.is_a?(Hash)
+          build_params(v)
+        end
+        @@params[k] = v if @@keychain.include?(k) 
+      end
+      p "Params built: " 
+      p @@params
+      translate_keys
+    end
+
+    def translate_keys
+      @@internal_keys = @@keys
+      @@internal_keys.each do |k, v|
+        @@internal_keys[k] = @@params[v]
+      end
+      configure
+    end
+
+    def set_keychain
+      @@keys.each do |k, v|
+      @@keychain << v
+      end
+    end
+
+    def configure
+      @@old_password = @@internal_keys[:old_password]
+      @@password = @@internal_keys[:password] || nil
+      @@confirmation = @@internal_keys[:confirmation]
+    end
 
     def validate_new_passwords(user)
       CopDetectiveValidator.validate_new_passwords(user, @@password, @@confirmation)
