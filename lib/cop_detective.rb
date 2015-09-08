@@ -29,7 +29,7 @@ class CopDetective
 
     def inspect_keys(keys)
       keys.each do |k, v|
-        raise CopDetective::ErrorMessages.formatting if k != :confirmation || k != :password || k != :old_password
+        raise CopDetective::ErrorMessages.formatting if k != :confirmation && k != :password && k != :old_password
       end
     end
 
@@ -51,8 +51,8 @@ class CopDetective
       CopDetectiveAssigner.build_params(params)
     end
 
-    def set_keychain
-      CopDetectiveAssigner.set_keychain
+    def set_keychain(keys)
+      CopDetectiveAssigner.set_keychain(keys)
     end
 
     def validate_new_passwords(user)

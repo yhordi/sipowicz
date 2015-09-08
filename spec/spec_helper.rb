@@ -1,5 +1,6 @@
 require_relative '../lib/cop_detective'
 require_relative '../lib/validator'
+require_relative '../lib/assigner'
 require 'active_model'
 require 'active_record'
 require 'database_cleaner'
