@@ -19,12 +19,14 @@ class CopDetective
           password:
           confirmation:
           old_password:
-          
+
         the values you pass should reflect keys in your params hash.
         a correctly configured hash would look similar to this:
-          password: :new_password
-          confirmation: :password_again
+        {
+          password: :new_password,
+          confirmation: :password_again,
           old_password: :original_password
+        }
         MESSAGE
       end
 
