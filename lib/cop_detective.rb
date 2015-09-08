@@ -59,6 +59,7 @@ class CopDetective
 
     def set_keychain(keys)
       CopDetectiveAssigner.set_keychain(keys)
+      assign
     end
 
     def validate_new_passwords(user)
