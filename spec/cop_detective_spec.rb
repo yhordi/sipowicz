@@ -14,19 +14,7 @@ describe CopDetective do
       expect{CopDetective.set_keys(1)}.to raise_error(RuntimeError, 'You must pass a hash to the set_keys method')
     end
     it "throws an error when the hash's keys are set incorrectly" do
-      expect{CopDetective.set_keys({dingus: 3,asdf: 4, asdf: 5})}.to raise_error(RuntimeError, <<-MESSAGE 
-        The keys in the hash you pass to #set_keys must be as follows:
-          password:
-          confirmation:
-          old_password:
-          
-        the values you pass should reflect keys in your params hash.
-        a correctly configured hash would look similar to this:
-          password: :new_password
-          confirmation: :password_again
-          old_password: :original_password
-        MESSAGE
-        )
+      expect{CopDetective.set_keys({dingus: 3,asdf: 4, asdf: 5})}.to raise_error(RuntimeError)
     end
   end
 
