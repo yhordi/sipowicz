@@ -3,28 +3,20 @@ describe CopDetective do
   let(:new_user) { User.new(name: 'Derek', password: 'Noodle') }
   let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis', old_password: 'supermanz'} }
   let(:good_config) {
-    CopDetective.configure(
       {password: params[:user][:password], 
         confirmation: params[:confirmation],
         old_password: params[:old_password]
-      })
+      }
   }
 
-  describe '#configure' do
-    context 'on good params' do
-      it 'assigns CopDetective class variables' do
-        expect(good_config).to eq('Canadian Travis')
-      end
+  describe '#set_keys' do
+    it 'throws an error when passed something other than a hash' do
+      expect{CopDetective.set_keys(1)}.to raise_error(RuntimeError, 'You must pass a hash to the set_keys method')
     end
-    context 'on bad params' do
-      it 'raises an error with nil params' do
-        expect{CopDetective.configure({password: nil, confirmation: nil})}.to raise_error(RuntimeError)
-      end
-      it 'raises an error when an empty string is passed' do
-        expect{CopDetective.configure({password: '', confirmation: ''})}.to raise_error(RuntimeError)
-      end
+    it "throws an error when the hash's keys are set incorrectly" do
     end
   end
+
   describe '#options_error' do
     it 'raises a nil option error with nil params' do
       expect{CopDetective.configure({password: nil})}.to raise_error(RuntimeError, 'Option passed to password is nil.')

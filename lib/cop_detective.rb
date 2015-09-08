@@ -7,13 +7,14 @@ require_relative 'assigner'
 
 class CopDetective
   cattr_reader :messages
-  
     include ActiveModel::SecurePassword
     @@messages = CopDetectiveValidator.messages
 
     class << self
 
     def set_keys(keys)
+      raise CopDetective::ErrorMessages.wrong_datatype if keys.class != Hash
+      inspect_keys(keys)
       @@keys = keys
       set_keychain(@@keys)
     end
@@ -25,6 +26,12 @@ class CopDetective
     end
 
     private
+
+    def inspect_keys(keys)
+      keys.each do |k, v|
+        raise format if k != :confirmation || k != :password || k != :old_password
+      end
+    end
 
     def update_user(user)
       return validate_new_passwords(user) if valid_credentials?(user, @@old_password)

@@ -9,6 +9,25 @@ class CopDetective
         "You entered your original password incorrectly."
       end
 
+      def wrong_datatype
+        'You must pass a hash to the set_keys method'
+      end
+
+      def format
+        raise <<-MESSAGE 
+        The keys in the hash you pass to #set_keys must be as follows:
+          password:
+          confirmation:
+          old_password:
+        the values represent the keys in your params hash.
+
+        a correctly configured hash would look like this:
+          password: :new_password
+          confirmation: :password_again
+          old_password: :original_password
+        MESSAGE
+      end
+
       def non_matching
         "Your new passwords don't match."
       end
