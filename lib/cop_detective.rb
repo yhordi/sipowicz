@@ -29,7 +29,7 @@ class CopDetective
 
     def inspect_keys(keys)
       keys.each do |k, v|
-        raise format if k != :confirmation || k != :password || k != :old_password
+        raise CopDetective::ErrorMessages.formatting if k != :confirmation || k != :password || k != :old_password
       end
     end
 
