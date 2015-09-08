@@ -3,14 +3,14 @@ require 'active_support'
 require 'active_record'
 require_relative 'errors'
 require_relative 'validator'
+require_relative 'assigner'
 
 class CopDetective
   cattr_reader :messages
   
     include ActiveModel::SecurePassword
     @@messages = CopDetectiveValidator.messages
-    @@keychain = []
-    @@params = Hash.new(nil)
+
     class << self
 
     def set_keys(keys)
@@ -41,35 +41,11 @@ class CopDetective
     end
 
     def build_params(params)
-      params.each do |k, v|
-        if v.is_a?(Hash)
-          build_params(v)
-        end
-        @@params[k] = v if @@keychain.include?(k) 
-      end
-      p "Params built: " 
-      p @@params
-      translate_keys
-    end
-
-    def translate_keys
-      @@internal_keys = @@keys
-      @@internal_keys.each do |k, v|
-        @@internal_keys[k] = @@params[v]
-      end
-      configure
+      CopDetectiveAssigner.build_params(params)
     end
 
     def set_keychain
-      @@keys.each do |k, v|
-      @@keychain << v
-      end
-    end
-
-    def configure
-      @@old_password = @@internal_keys[:old_password]
-      @@password = @@internal_keys[:password] || nil
-      @@confirmation = @@internal_keys[:confirmation]
+      CopDetectiveAssigner.set_keychain
     end
 
     def validate_new_passwords(user)
