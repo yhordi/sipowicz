@@ -5,7 +5,7 @@ describe CopDetectiveAssigner do
 
   describe '#set_keychain' do
     it 'sets the @@keychain array' do
-      expect(CopDetectiveAssigner.set_keychain({password: :new_password, confirmation: :password_again, old_password: :password})).to eq([:new_password, :password_again, :password])
+      expect(CopDetectiveAssigner.set_keychain({password: :new_password, confirmation: :password_again, old_password: :password}, params)).to eq([:new_password, :password_again, :password])
     end
   end
 
