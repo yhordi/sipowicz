@@ -12,6 +12,12 @@ class CopDetective
 
     class << self
 
+    def configure(options)
+      @@old_password = options[:old_password]
+      @@password = options[:password]
+      @@confirmation = options[:confirmation]
+    end
+
     def set_keys(keys)
       raise CopDetective::ErrorMessages.wrong_datatype if keys.class != Hash
       inspect_keys(keys)
@@ -47,8 +53,8 @@ class CopDetective
       end
     end
 
-    def build_params(params)
-      CopDetectiveAssigner.build_params(params)
+    def assign(params)
+      CopDetectiveAssigner.assign(params)
     end
 
     def set_keychain(keys)

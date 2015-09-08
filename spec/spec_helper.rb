@@ -16,8 +16,7 @@ ActiveRecord::Schema.define do
     t.string :name
     t.string :password_digest
   end
-end                     
-
-DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.clean
-                
+end  
+                   
+  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.clean
