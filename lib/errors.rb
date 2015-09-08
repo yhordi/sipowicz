@@ -38,8 +38,8 @@ class CopDetective
         flash[:error] = model.errors.full_messages
       end
 
-      def options_error(key, error)
-        raise "Option passed to #{key} #{error}"
+      def options_error(key)
+        "Option passed to #{key} must be a symbol."
       end
     end
   end
