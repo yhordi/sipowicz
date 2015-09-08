@@ -2,10 +2,9 @@ describe CopDetectiveAssigner do
 
   let(:params) { {user: {new_password: 'Canadian Travis'}, password_again: 'Canadian Travis', password: 'supermanz'} }
 
-
   describe '#set_keychain' do
     it 'sets the @@keychain array' do
-      expect(CopDetectiveAssigner.set_keychain({password: :new_password, confirmation: :password_again, old_password: :password}, params)).to eq([:new_password, :password_again, :password])
+      expect(CopDetectiveAssigner.set_keychain({password: :new_password, confirmation: :password_again, old_password: :password})).to eq([:new_password, :password_again, :password])
     end
   end
 
@@ -17,6 +16,7 @@ describe CopDetectiveAssigner do
 
   describe '#translate_keys' do
     it 'sets the @@internal_keys hash' do
+        CopDetectiveAssigner.build_params(params)
       expect(CopDetectiveAssigner.translate_keys).to eq({:password=>"Canadian Travis", :confirmation=>"Canadian Travis", :old_password=>"supermanz"})
     end
   end

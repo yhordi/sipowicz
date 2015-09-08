@@ -25,12 +25,11 @@ class CopDetectiveAssigner
       configure
     end
 
-    def set_keychain(keys, params)
+    def set_keychain(keys)
       @@keys = keys
       keys.each do |k, v|
         @@keychain << v
       end
-      assign(params)
       @@keychain
     end
 
