@@ -19,7 +19,8 @@ class CopDetectiveAssigner
       @@params
     end
 
-    def assign(params)
+    def assign(params, keys)
+      set_keychain(keys)
       build_params(params)
       translate_keys
       configure

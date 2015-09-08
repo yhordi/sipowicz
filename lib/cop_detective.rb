@@ -21,12 +21,12 @@ class CopDetective
     def set_keys(keys)
       raise CopDetective::ErrorMessages.wrong_datatype if keys.class != Hash
       inspect_keys(keys)
+      inspect_values(keys)
       @@keys = keys
-      set_keychain(@@keys)
     end
 
     def investigate(user, params)
-      assign(params)
+      assign(params, @@keys)
       return create_user(user) if @@old_password == nil
       update_user(user)
     end
@@ -36,6 +36,12 @@ class CopDetective
     def inspect_keys(keys)
       keys.each do |k, v|
         raise CopDetective::ErrorMessages.formatting if k != :confirmation && k != :password && k != :old_password
+      end
+    end
+
+    def inspect_values(keys)
+      keys.each do |k, v|
+        raise CopDetective::ErrorMessages.options_error(k) if v.class != Symbol
       end
     end
 
@@ -53,13 +59,8 @@ class CopDetective
       end
     end
 
-    def assign(params)
-      CopDetectiveAssigner.assign(params)
-    end
-
-    def set_keychain(keys)
-      CopDetectiveAssigner.set_keychain(keys)
-      assign
+    def assign(params, keys)
+      CopDetectiveAssigner.assign(params, keys)
     end
 
     def validate_new_passwords(user)
