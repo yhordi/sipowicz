@@ -6,6 +6,9 @@
 
 ###Changelog
 
+#### V 0.1.1
+- Fixes a bug in the gemspec that was causing assigner.rb to not get pushed
+
 #### V 0.1.0
 - Creates a CopDetectiveAssigner class which makes configuration easier on the user
 - Removes the work of having to call separate methods when updating or creating respectively, now a user can just pass params and a user object to the investigate method.
