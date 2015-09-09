@@ -3,18 +3,45 @@ require 'active_support'
 require 'active_record'
 require_relative 'errors'
 require_relative 'validator'
+require_relative 'assigner'
 
 class CopDetective
   cattr_reader :messages
-  class << self
     include ActiveModel::SecurePassword
     @@messages = CopDetectiveValidator.messages
 
+    class << self
+
     def configure(options)
-      if CopDetectiveValidator.options_valid?(options)
-        @@old_password = options[:old_password] ||= 'not set'
-        @@password = options[:password]
-        @@confirmation = options[:confirmation]
+      @@old_password = options[:old_password]
+      @@password = options[:password]
+      @@confirmation = options[:confirmation]
+    end
+
+    def set_keys(keys)
+      raise CopDetective::ErrorMessages.wrong_datatype if keys.class != Hash
+      inspect_keys(keys)
+      inspect_values(keys)
+      @@keys = keys
+    end
+
+    def investigate(user, params)
+      assign(params, @@keys)
+      return create_user(user) if @@old_password == nil
+      update_user(user)
+    end
+
+    private
+
+    def inspect_keys(keys)
+      keys.each do |k, v|
+        raise CopDetective::ErrorMessages.formatting if k != :confirmation && k != :password && k != :old_password
+      end
+    end
+
+    def inspect_values(keys)
+      keys.each do |k, v|
+        raise CopDetective::ErrorMessages.options_error(k) if v.class != Symbol
       end
     end
 
@@ -32,7 +59,9 @@ class CopDetective
       end
     end
 
-    private
+    def assign(params, keys)
+      CopDetectiveAssigner.assign(params, keys)
+    end
 
     def validate_new_passwords(user)
       CopDetectiveValidator.validate_new_passwords(user, @@password, @@confirmation)
