@@ -7,7 +7,7 @@ Gem::Specification.new 'cop-detective', '0.1.0' do |s|
   s.required_ruby_version = '>= 2.0.0'
   s.authors     = ["Jordan Kamin"]
   s.email       = 'jordanakamin@gmail.com'
-  s.files       = ["lib/cop_detective.rb", "lib/validator.rb", "lib/errors.rb, lib/assigner.rb"]
+  s.files       = ["lib/cop_detective.rb", "lib/validator.rb", "lib/errors.rb", "lib/assigner.rb"]
   s.homepage    =
     'http://rubygems.org/gems/cop-detective'
   s.license       = 'MIT'
