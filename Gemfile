@@ -4,6 +4,7 @@ gem 'sqlite3'
 gem 'activemodel'
 gem 'activerecord'
 gem 'bcrypt'
+gem 'awesome_print'
 
 group :test do
   gem 'rspec-rails'
