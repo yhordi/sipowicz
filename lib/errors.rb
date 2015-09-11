@@ -34,10 +34,6 @@ class CopDetective
         "Your new passwords don't match."
       end
 
-      def show_errors(model)
-        flash[:error] = model.errors.full_messages
-      end
-
       def options_error(key)
         "Option passed to #{key} must be a symbol."
       end

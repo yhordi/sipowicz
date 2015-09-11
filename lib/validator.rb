@@ -20,14 +20,6 @@ class CopDetectiveValidator
       end
     end
 
-    def options_valid?(options)
-      options.each do |k, v|
-        return CopDetective::ErrorMessages.options_error(k, @@options_errors[:option_nil]) if v.nil?
-        return CopDetective::ErrorMessages.options_error(k, @@options_errors[:empty]) if v.empty?
-      end
-      true
-    end
-
     def valid_credentials?(user, old_password)
       user.authenticate(old_password) == user
     end
