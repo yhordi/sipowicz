@@ -47,7 +47,7 @@ class CopDetective
 
     def update_user(user)
       return validate_new_passwords(user) if valid_credentials?(user, @@old_password)
-      messages[:error] = ErrorMessages.unsaved_password(ErrorMessages.invalid_password)
+      user.errors.set(:password, [ErrorMessages.unsaved_password(ErrorMessages.invalid_password)])
     end
 
     def create_user(user)
