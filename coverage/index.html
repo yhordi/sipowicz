@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.10.0/application.js' type='text/javascript'></script>    
     <link href='./assets/0.10.0/application.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_yellow.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_red.png" />
     <link rel="icon" type="image/png" href="./assets/0.10.0/favicon.png" />
   </head>
   
@@ -14,18 +14,18 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-11T14:19:06-07:00">2015-09-11T14:19:06-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-11T14:23:30-07:00">2015-09-11T14:23:30-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">80.65%</span></span>
+    (<span class="covered_percent"><span class="red">77.42%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.95
+         0.85
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>6</b> files in total.
     <b>155</b> relevant lines. 
-    <span class="green"><b>125</b> lines covered</span> and
-    <span class="red"><b>30</b> lines missed </span>
+    <span class="green"><b>120</b> lines covered</span> and
+    <span class="red"><b>35</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -62,32 +62,32 @@
       
       <tr>
         <td class="strong"><a href="#4377ee82d4a897d2f54a2f9eb6a55d873950159f" class="src_link" title="lib/assigner.rb">lib/assigner.rb</a></td>
-        <td class="green strong">100.0 %</td>
+        <td class="green strong">97.06 %</td>
         <td>54</td>
         <td>34</td>
-        <td>34</td>
-        <td>0</td>
-        <td>1.4</td>
+        <td>33</td>
+        <td>1</td>
+        <td>1.1</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#e8f46bd7ca0e140d88c782fc35d869fc89298be2" class="src_link" title="lib/cop_detective.rb">lib/cop_detective.rb</a></td>
-        <td class="yellow strong">88.89 %</td>
+        <td class="yellow strong">84.44 %</td>
         <td>76</td>
         <td>45</td>
-        <td>40</td>
-        <td>5</td>
-        <td>1.0</td>
+        <td>38</td>
+        <td>7</td>
+        <td>0.9</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#6cd4a9c4d85f7d8fcefa5fb7d9437821679c94ab" class="src_link" title="lib/errors.rb">lib/errors.rb</a></td>
-        <td class="red strong">70.59 %</td>
+        <td class="red strong">58.82 %</td>
         <td>46</td>
         <td>17</td>
-        <td>12</td>
-        <td>5</td>
-        <td>0.7</td>
+        <td>10</td>
+        <td>7</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
@@ -165,11 +165,11 @@
         <div class="source_table" id="4377ee82d4a897d2f54a2f9eb6a55d873950159f">
   <div class="header">
     <h3>lib/assigner.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="green">97.06 %</span> covered</h4>
     <div>
       <b>34</b> relevant lines. 
-      <span class="green"><b>34</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <span class="green"><b>33</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
   
@@ -242,26 +242,26 @@
           <code class="ruby">    def build_params(params)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
           
           <code class="ruby">      @@keychain</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
           <code class="ruby">      params.each do |k, v|</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="14">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="14">
+          <span class="hits">2</span>
           
           <code class="ruby">        if v.is_a?(Hash)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="15">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
           
           <code class="ruby">          build_params(v)</code>
         </li>
@@ -272,8 +272,8 @@
           <code class="ruby">        end</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="17">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="17">
+          <span class="hits">2</span>
           
           <code class="ruby">        @@params[k] = v if @@keychain.include?(k) </code>
         </li>
@@ -284,8 +284,8 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="19">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
           
           <code class="ruby">      @@params</code>
         </li>
@@ -507,11 +507,11 @@
         <div class="source_table" id="e8f46bd7ca0e140d88c782fc35d869fc89298be2">
   <div class="header">
     <h3>lib/cop_detective.rb</h3>
-    <h4><span class="yellow">88.89 %</span> covered</h4>
+    <h4><span class="yellow">84.44 %</span> covered</h4>
     <div>
       <b>45</b> relevant lines. 
-      <span class="green"><b>40</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>38</b> lines covered</span> and
+      <span class="red"><b>7</b> lines missed.</span>
     </div>
   </div>
   
@@ -698,8 +698,8 @@
           <code class="ruby">      return create_user(user) if @@old_password == nil</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="31">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="31">
+          
           
           <code class="ruby">      update_user(user)</code>
         </li>
@@ -806,14 +806,14 @@
           <code class="ruby">    def update_user(user)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="49">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="49">
+          
           
           <code class="ruby">      return validate_new_passwords(user) if valid_credentials?(user, @@old_password)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="50">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="50">
+          
           
           <code class="ruby">      user.errors.set(:password, [ErrorMessages.unsaved_password(ErrorMessages.invalid_password)])</code>
         </li>
@@ -836,8 +836,8 @@
           <code class="ruby">    def create_user(user)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="54">
-          
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
           
           <code class="ruby">      if CopDetectiveValidator.new_passwords_match?(@@password, @@confirmation) &amp;&amp; user.valid?</code>
         </li>
@@ -860,10 +860,10 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="58">
+        <li class="covered" data-hits="1" data-linenumber="58">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        user.errors.full_messages &lt;&lt; &quot;Passwords don&#39;t match or other params are not valid.&quot;</code>
+          <code class="ruby">        user.errors.set(:password, [&quot;Passwords don&#39;t match or other params are not valid.&quot;])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
@@ -938,8 +938,8 @@
           <code class="ruby">    def valid_credentials?(user, old_password)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="71">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="71">
+          
           
           <code class="ruby">      CopDetectiveValidator.valid_credentials?(user, old_password)</code>
         </li>
@@ -981,11 +981,11 @@
         <div class="source_table" id="6cd4a9c4d85f7d8fcefa5fb7d9437821679c94ab">
   <div class="header">
     <h3>lib/errors.rb</h3>
-    <h4><span class="red">70.59 %</span> covered</h4>
+    <h4><span class="red">58.82 %</span> covered</h4>
     <div>
       <b>17</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>7</b> lines missed.</span>
     </div>
   </div>
   
@@ -1016,8 +1016,8 @@
           <code class="ruby">      def unsaved_password(reason)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="5">
+          
           
           <code class="ruby">        &quot;Your new password was not saved. #{reason}&quot;</code>
         </li>
@@ -1040,8 +1040,8 @@
           <code class="ruby">      def invalid_password</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
           
           <code class="ruby">        &quot;You entered your original password incorrectly.&quot;</code>
         </li>
@@ -1472,8 +1472,8 @@
           <code class="ruby">    def valid_credentials?(user, old_password)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="32">
+          
           
           <code class="ruby">      user.authenticate(old_password) == user</code>
         </li>
@@ -1496,8 +1496,8 @@
           <code class="ruby">    def new_passwords_match?(password, confirmation)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="36">
-          
+        <li class="covered" data-hits="1" data-linenumber="36">
+          <span class="hits">1</span>
           
           <code class="ruby">      password == confirmation</code>
         </li>
@@ -1550,8 +1550,8 @@
           <code class="ruby">  let(:user) { User.create(name: &#39;Topher&#39;, password: &#39;supermanz&#39;) }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="3">
+          <span class="hits">2</span>
           
           <code class="ruby">  let(:new_user) { User.new(name: &#39;Derek&#39;, password: &#39;Noodle&#39;) }</code>
         </li>
@@ -1562,8 +1562,8 @@
           <code class="ruby">  let(:params) { {user: {password: &#39;Canadian Travis&#39;}, confirmation: &#39;Canadian Travis&#39;, old_password: &#39;supermanz&#39;} }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="5">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
           
           <code class="ruby">  let(:bad_params) { {user: {password: &#39;Canadian Travis&#39;}, confirmation: &#39;Canadian Travis&#39;, old_password: &#39;sprmnz&#39;} }</code>
         </li>
@@ -1574,8 +1574,8 @@
           <code class="ruby">  let(:new_user_params) { {password: &#39;Noodle&#39;, confirmation: &#39;Noodle&#39;} }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="7">
+          <span class="hits">2</span>
           
           <code class="ruby">  let(:bad_new_user_params) { {password: &#39;Noodle&#39;, confirmation: &#39;Nodle&#39;} }</code>
         </li>
@@ -1778,14 +1778,14 @@
           <code class="ruby">      it &#39;responds with an error message when attempting to update a user&#39; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="41">
+          
           
           <code class="ruby">        CopDetective.investigate(user, bad_params)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="42">
+          
           
           <code class="ruby">        expect(user.errors.get(:password)).to include(&quot;Your new password was not saved. You entered your original password incorrectly.&quot;)</code>
         </li>
@@ -1802,16 +1802,16 @@
           <code class="ruby">      it &#39;responds with an error message when attempting to create a user&#39; do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="45">
-          
+        <li class="covered" data-hits="1" data-linenumber="45">
+          <span class="hits">1</span>
           
           <code class="ruby">        CopDetective.investigate(new_user, bad_new_user_params)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="46">
+        <li class="covered" data-hits="1" data-linenumber="46">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        expect(user.errors.full_messages).to include(&quot;Your new password was not saved. Your new passwords don&#39;t match.&quot;)</code>
+          <code class="ruby">        expect(new_user.errors.get(:password)).to include(&quot;Passwords don&#39;t match or other params are not valid.&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">

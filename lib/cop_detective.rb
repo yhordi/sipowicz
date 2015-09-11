@@ -55,7 +55,7 @@ class CopDetective
         user.save
         @@messages[:notice] = "Account created. You may now log in."
       else
-        user.errors.full_messages << "Passwords don't match or other params are not valid."
+        user.errors.set(:password, ["Passwords don't match or other params are not valid."])
       end
     end
 
