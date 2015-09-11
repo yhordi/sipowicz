@@ -43,7 +43,7 @@ describe CopDetective do
       end
       it 'responds with an error message when attempting to create a user' do
         CopDetective.investigate(new_user, bad_new_user_params)
-        expect(user.errors.full_messages).to include("Your new password was not saved. Your new passwords don't match.")
+        expect(new_user.errors.get(:password)).to include("Passwords don't match or other params are not valid.")
       end
     end
   end
