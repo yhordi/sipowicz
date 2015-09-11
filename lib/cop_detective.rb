@@ -7,10 +7,10 @@ require_relative 'assigner'
 
 class CopDetective
   cattr_reader :messages
-    include ActiveModel::SecurePassword
-    @@messages = CopDetectiveValidator.messages
+  include ActiveModel::SecurePassword
+  @@messages = CopDetectiveValidator.messages
 
-    class << self
+  class << self
 
     def configure(options)
       @@old_password = options[:old_password]
@@ -26,12 +26,19 @@ class CopDetective
     end
 
     def investigate(user, params)
+      reset_variables
       assign(params, @@keys)
       return create_user(user) if @@old_password == nil
       update_user(user)
     end
 
     private
+
+    def reset_variables
+      @@old_password = nil
+      @@password = nil
+      @@confirmation = nil
+    end
 
     def inspect_keys(keys)
       keys.each do |k, v|

@@ -8,8 +8,14 @@ class CopDetectiveAssigner
 
   class << self
 
+    def reset_variables
+      @@params = Hash.new(nil)
+      @@keys = nil
+      @@keychain = []
+      @@internal_keys = nil
+    end
+
     def build_params(params)
-      @@keychain
       params.each do |k, v|
         if v.is_a?(Hash)
           build_params(v)
@@ -20,6 +26,7 @@ class CopDetectiveAssigner
     end
 
     def assign(params, keys)
+      reset_variables
       set_keychain(keys)
       build_params(params)
       translate_keys
