@@ -6,6 +6,9 @@
 
 ###Changelog
 
+#### V 0.1.2
+- Fixes a bug that was causing incorrect errors being thrown when creating a new user
+
 #### V 0.1.1
 - Fixes a bug in the gemspec that was causing assigner.rb to not get pushed
 

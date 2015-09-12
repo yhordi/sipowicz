@@ -7,10 +7,10 @@ require_relative 'assigner'
 
 class CopDetective
   cattr_reader :messages
-    include ActiveModel::SecurePassword
-    @@messages = CopDetectiveValidator.messages
+  include ActiveModel::SecurePassword
+  @@messages = CopDetectiveValidator.messages
 
-    class << self
+  class << self
 
     def configure(options)
       @@old_password = options[:old_password]
@@ -26,12 +26,19 @@ class CopDetective
     end
 
     def investigate(user, params)
+      reset_variables
       assign(params, @@keys)
       return create_user(user) if @@old_password == nil
       update_user(user)
     end
 
     private
+
+    def reset_variables
+      @@old_password = nil
+      @@password = nil
+      @@confirmation = nil
+    end
 
     def inspect_keys(keys)
       keys.each do |k, v|
@@ -47,7 +54,7 @@ class CopDetective
 
     def update_user(user)
       return validate_new_passwords(user) if valid_credentials?(user, @@old_password)
-      messages[:error] = ErrorMessages.unsaved_password(ErrorMessages.invalid_password)
+      user.errors.set(:password, [ErrorMessages.unsaved_password(ErrorMessages.invalid_password)])
     end
 
     def create_user(user)
@@ -55,7 +62,7 @@ class CopDetective
         user.save
         @@messages[:notice] = "Account created. You may now log in."
       else
-        user.errors.full_messages << "Passwords don't match or other params are not valid."
+        user.errors.set(:password, ["Passwords don't match or other params are not valid."])
       end
     end
 
