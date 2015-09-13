@@ -1,6 +1,6 @@
 # Cop-Detective
 [![Gem Version](https://badge.fury.io/rb/cop-detective.svg)](http://badge.fury.io/rb/cop-detective)
-[![Travis CI](https://travis-ci.org/yhordi/cop-detective.svg?branch=master)]
+![Travis CI](https://travis-ci.org/yhordi/cop-detective.svg?branch=master)
 #### an open-source password validator for use with rails 4.
 
 <p> Note: This is the pre-alpha version of this gem, so it is probably riddled with bugs.</p>
