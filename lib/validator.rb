@@ -13,7 +13,6 @@ class CopDetectiveValidator
     def validate_new_passwords(user, password, confirmation)
       if new_passwords_match?(password, confirmation)
         user.password = password
-        user.update_attributes(password: password)
         @@messages[:notice] = "Password updated"
       else
         user.errors.full_messages << CopDetective::ErrorMessages.unsaved_password(CopDetective::ErrorMessages.non_matching)
