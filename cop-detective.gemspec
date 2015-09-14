@@ -1,7 +1,7 @@
-Gem::Specification.new 'cop-detective', '0.1.2' do |s|
+Gem::Specification.new 'cop-detective', '0.1.3' do |s|
   s.name        = 'cop-detective'
-  s.version     = '0.1.2'
-  s.date        = '2015-09-05'
+  s.version     = '0.1.3'
+  s.date        = '2015-09-13'
   s.summary     = "Do your passwords match?"
   s.description = "A simple gem to use in your controller to remove some of the work of comparing passwords and password confirmations."
   s.required_ruby_version = '>= 2.0.0'

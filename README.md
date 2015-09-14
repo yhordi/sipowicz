@@ -7,6 +7,9 @@
 
 ###Changelog
 
+#### V 0.1.3
+- Users can now pass strings as well as symbols to CopDetective#set_keys
+
 #### V 0.1.2
 - Fixes a bug that was causing incorrect errors being thrown when creating a new user
 
