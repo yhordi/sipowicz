@@ -1,7 +1,7 @@
 describe CopDetective do
   let(:user) { User.create(name: 'Topher', password: 'supermanz') }
   let(:new_user) { User.new(name: 'Derek', password: 'Noodle') }
-  let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis', old_password: 'supermanz'} }
+  let(:params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis', old_password: 'supermanz', pic_url: 'image.jpg'} }
   
   let(:bad_params) { {user: {password: 'Canadian Travis'}, confirmation: 'Canadian Travis', old_password: 'sprmnz'} }
   let(:new_user_params) { {password: 'Noodle', confirmation: 'Noodle'} }
