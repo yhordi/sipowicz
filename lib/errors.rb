@@ -35,7 +35,7 @@ class CopDetective
       end
 
       def options_error(key)
-        "Option passed to #{key} must be a symbol."
+        "Option passed to #{key} must be a symbol or string."
       end
     end
   end
