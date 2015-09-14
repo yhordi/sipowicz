@@ -7,6 +7,9 @@
 
 ###Changelog
 
+#### V 0.1.4
+- CopDetective#investigate no longer updates password in the database, but it does still update the attribute on the passed user object
+
 #### V 0.1.3
 - Users can now pass strings as well as symbols to CopDetective#set_keys
 
