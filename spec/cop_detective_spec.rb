@@ -44,7 +44,7 @@ describe CopDetective do
       it "responds with a success message when updating a password" do
         expect(CopDetective.investigate(user, params)).to eq('Password updated')
       end
-      it 'updates a the password of a user in the databse' do
+      it 'updates the password of a user in the databse' do
         new_user.errors.delete(:password)
         CopDetective.investigate(user, params)
         expect(old_salt).to_not eq(user.password_digest)

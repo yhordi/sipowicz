@@ -67,7 +67,11 @@ class CopDetective
     end
 
     def assign(params, keys)
-      CopDetectiveAssigner.assign(params, keys)
+      assigner.assign(params, keys)
+    end
+
+    def assigner
+      CopDetectiveAssigner.new
     end
 
     def validate_new_passwords(user)
