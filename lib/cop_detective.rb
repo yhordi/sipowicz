@@ -19,7 +19,7 @@ class CopDetective
     end
 
     def set_keys(keys)
-      raise CopDetective::ErrorMessages.wrong_datatype if keys.class != Hash
+      raise CopDetective::ErrorMessages.wrong_datatype if keys.class != Hash && keys.class != String
       inspect_keys(keys)
       inspect_values(keys)
       @@keys = keys
@@ -48,7 +48,7 @@ class CopDetective
 
     def inspect_values(keys)
       keys.each do |k, v|
-        raise CopDetective::ErrorMessages.options_error(k) if v.class != Symbol
+        raise CopDetective::ErrorMessages.options_error(k) if v.class != Symbol && v.class != String
       end
     end
 
