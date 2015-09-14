@@ -23,7 +23,7 @@ In config/application.rb:
 
     {:user => {"password" => "hello", "id" => 47'}, :password_again => "hello",  :original_password => "dropTop"}
 
-in this case the relevant keys in the hash are "password", :password_again, and :original_password. In order for cop-detective to be able to check params passed to it you'll need to call the #set_keys  method below and pass it a hash where the keys are :password, :confirmation, and :old_password, and the values are the relevant keys in your params hash. You call the #set_keys method just below where you required the gem.
+In this case the relevant keys in the hash are "password", :password_again, and :original_password. In order for cop-detective to be able to check params passed to it you'll need to call the #set_keys method the line below where you required it in config/application.rb. You'll then pass it a hash where the keys are :password, :confirmation, and :old_password, and the values are the relevant keys in your params hash.
 
     require 'cop_detective'  
     CopDetective.set_keys({:password => "password", :confirmation => :password_again, :old_password => :original_password})
